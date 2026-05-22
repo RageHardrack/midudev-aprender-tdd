@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v6
       - name: 'Hello World'
         run: echo "Hello World"
       - name: Dime la fecha
