@@ -5,13 +5,16 @@ name: Lo que queramos
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
 
 jobs:
   platzi:
-
     runs-on: ubuntu-latest
 
     steps:
       - name: 'Hello World'
         run: echo "Hello World"
+      - name: Dime la fecha
+        run: date
+      - name: Mostrar el contenido del directorio
+        run: ls -la
