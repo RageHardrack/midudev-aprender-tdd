@@ -20,6 +20,7 @@ jobs:
         node-version: 24
         cache: 'npm'
     - run: npm install --legacy-peer-deps
+    - run: npm run lint
     - run: npm run build
     # - name: 'Hello World'
     #   run: echo "Hello World"
