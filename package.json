@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "build": "vite build",
     "dev": "vite",
     "test": "vitest",
     "coverage": "vitest run --coverage"

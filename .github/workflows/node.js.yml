@@ -15,9 +15,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v7
-    - name: 'Hello World'
-      run: echo "Hello World"
-    - name: Dime la fecha
-      run: date
-    - name: Muestra el contenido del directorio
-      run: ls -la
+    - uses: actions/setup-node@v7
+      with:
+        node-version: 24
+        cache: 'npm'
+    - run: npm install --legacy-peer-deps
+    - run: npm run build
+    # - name: 'Hello World'
+    #   run: echo "Hello World"
+    # - name: Dime la fecha
+    #   run: date
+    # - name: Muestra el contenido del directorio
+    #   run: ls -la
