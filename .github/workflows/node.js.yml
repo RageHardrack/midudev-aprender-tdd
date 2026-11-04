@@ -1,0 +1,38 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  midudev:
+
+    runs-on: ubuntu-latest
+
+# Esto es para trabajar con diferentes opciones de node(o de cualquier librería), útil cuando estás desarrollando librerías de
+# código abierto y quieres probarlas con distintas versiones de una tecnología base
+    strategy:
+      matrix:
+        node-version: [18.x,20.x,22.x]
+
+    steps:
+    - uses: actions/checkout@v7
+    - uses: actions/setup-node@v7
+      with:
+       # node-version: 24  #Comentado por lo de strategy
+        cache: 'npm'
+    - run: npm install --legacy-peer-deps
+    - run: npm run lint
+    - run: npm run test
+    - run: npm run build
+    # - name: 'Hello World'
+    #   run: echo "Hello World"
+    # - name: Dime la fecha
+    #   run: date
+    # - name: Muestra el contenido del directorio
+    #   run: ls -la
